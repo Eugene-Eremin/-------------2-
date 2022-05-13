@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type='text/javascript' src='https://code.jquery.com/jquery-1.12.2.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+	<title>Документы</title>
+</head>
+
+<body>
+	<header>
+		<img class="pngFavicon" src="favicon.png" width="50" height="50">
+		<h1 class="headerText">Документы</h1>
+		<img class="pngLogoIThub" src="logoIThub.png" width="65" height="50">
+	</header>
+	<div class="side"></div>
+	<div class="stdiv">
+		<div>
+			<h2>Создать "doctype"</h2>
+			<input class="fieldcl" id="el1" type="text" name="quantity" placeholder='Введите название "doctype"'>
+			<br><br>
+			<input class="fieldcl" id="el2" type="text" name="quantity"
+				placeholder="Введите ссылку на папку с pdf файлами">
+			<br><br>
+			<div>Введенные вами поля:</div>
+			<div>(нажмите кнопку "Создать", если вы закончили ввод полей)</div><br>
+			<div id="counter">...</div><br>
+			<div id="addbuttondelete">
+				<input class="fieldcl" id="elarr" type="text" name="quantity" placeholder="Введите название поля">
+				<input class="buttonadd" id="buttfiled" type="button" value="Добавить поле" />
+			</div>
+			<br><br>
+			<div class="ots" id="status"></div>
+			<input class="buttonaddsend" id="buttdoctype" type="button" value="Создать" />
+		</div>
+		<div class="hside"></div>
+		<div>
+			<h2>Отправить файл формата "csv"</h2>
+			<input class="fieldcl" id="iddoctype" type="text" name="quantity" placeholder='Введите id "doctype"'>
+			<br><br>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+			<form method="post" enctype="multipart/form-data" action="">
+				<input type="file" id="file" name="file" /><br><br>
+				<input class="buttonaddsend" type="button" id="btn" value="Отправить" />
+		</div>
+	</div>
+	<div class="side"></div>
+	<h2>Все имеющиеся "doctype"</h2>
+	<h3 class="col">(вы можете выбрать один из них (нажав на id) и вам выведет все pdf файлы этого doctype)</h3>
+	<div class="serchfirst">
+		<input class="mInpt" type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Найти по id">
+	</div>
+	<div class="vir">
+		<div class="table-scroll">
+			<table>
+				<thead>
+					<tr>
+						<th class="tb1bd">id</th>
+						<th class="tb2bd">Fields</th>
+						<th class="tb3bd">Original location URL</th>
+						<th class="tb4bd">Name</th>
+					</tr>
+				</thead>
+			</table>
+			<div class="table-scroll-body">
+				<table id="misfrot">
+					<tbody id="table1">
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="side"></div>
+	<h2>Статистика "csv" файла, который вы выбрали по "doctype"</h2>
+	<h3 class="col">(вы можете скачать этот "csv" файл к себе на компьютер)</h3>
+	<div class="virgoriz">
+		<div class="vircsvstat">
+			<div class="table-scroll">
+				<table>
+					<thead>
+						<tr class="virfl">
+							<th class="zadraz">Uploaded (количество загруженных строк)</th>
+							<th class="zadraz">Checked (всего проверенных строк)</th>
+							<th class="zadrazend">CheckedWithErrors (сколько строк было проверенных с ошибками)</th>
+						</tr>
+					</thead>
+				</table>
+				<div class="table-scroll-bodya">
+					<table>
+						<tbody id="tableStat">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="hhside"></div>
+		<div class="downloadfilecsv">
+			<div>Вы можете скачать</div>
+			<div>"csv" файл выбранного</div>
+			<div>вами типа документа ("doctype")</div><br>
+			<button class="download buttonorig">Скачать "csv" файл</button>
+		</div>
+	</div>
+	<div class="side"></div>
+	<h2>Все document выбранные вами (по id) doctype</h2>
+	<h3 class="col">(вы можете выбрать один из них)</h3>
+	<div class="serchfirst">
+		<input class="mInpt" type="text" id="myInput" onkeyup="myFunction()" placeholder="Найти по id">
+	</div>
+	<input class="buttonorig" id="buttondocorig" type="button" value="Показать все ориг. док." />
+	<div class="vir">
+		<div class="table-scroll">
+			<div class="table-scroll-bodyb">
+				<table>
+					<tbody id="outputpdfs">
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="side"></div>
+	<h2>Выбранный вами document и его файл(ы) pdf</h2>
+	<div class="rszm">
+		<div class="pdff">
+			<h3>PDF файл(ы)</h3>
+			<div class="pdf">
+				<iframe id="formurl" src="" style="width: 832px; height: 623px;" frameborder="0">Ваш браузер не
+					поддерживает фреймы</iframe>
+			</div>
+		</div>
+		<div class="change">
+			<h3>Выбранный объект document</h3>
+			<input class="buttonorig" id="buttondocorig2" type="button" value="Показать оригинальный док." />
+			<div class="table-scroll">
+				<div class="minitable table-scroll-bodyb">
+					<table>
+						<tbody id="outdoc">
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<h3>Изменить объект document</h3>
+			<input id="chb" type="checkbox" check><label>Проверено/Не проверено</label>
+			<div class="sidemini"></div>
+			<input class="fieldcl" id="fld" type="text" name="quantity" placeholder="Введите название поля"><br><br>
+			<input class="fieldcl" id="vl" type="text" name="quantity" placeholder="Введите значение поля"><br><br>
+			<div class="ots" id="statuchb"></div>
+			<input class="buttonaddsend" id="butfld" type="button" value="Изменить" />
+			<div class="arrow-6">
+				<svg id="buttonpdf1" width="18px" height="17px" viewBox="0 0 18 17" version="1.1"
+					xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<g transform="translate(8.500000, 8.500000) scale(-1, 1) translate(-8.500000, -8.500000)">
+						<polygon class="arrow-6-pl"
+							points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596">
+						</polygon>
+						<polygon class="arrow-6-pl-fixed"
+							points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596">
+						</polygon>
+						<path
+							d="M-1.48029737e-15,0.56157424 L-1.48029737e-15,16.1929159 L9.708,8.33860465 L-2.66453526e-15,0.56157424 L-1.48029737e-15,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z">
+						</path>
+					</g>
+				</svg>
+				<svg id="buttonpdf2" width="18px" height="17px" viewBox="-1 0 18 17" version="1.1"
+					xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<g>
+						<polygon class="arrow-6-pl"
+							points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596">
+						</polygon>
+						<polygon class="arrow-6-pl-fixed"
+							points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596">
+						</polygon>
+						<path
+							d="M-4.58892184e-16,0.56157424 L-4.58892184e-16,16.1929159 L9.708,8.33860465 L-1.64313008e-15,0.56157424 L-4.58892184e-16,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z">
+						</path>
+					</g>
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="side"></div>
+	<footer>
+		<div class="container">
+			<p>Этот сайт является внутренним ресурсом ИТ-колледжа ИТхаб-Екатеринбург и предназначен для использования
+				ИСКЛЮЧИТЕЛЬНО студентами или преподавателями.</p>
+			<p>Если Вы не являетесь сотрудником или учащимся ИТ-колледжа ИТхаб-Екатернинбург, или если Вы не получили
+				разрешение на доступ от администрации колледжа - просим <strong>немедленно покинуть</strong> этот сайт.
+			</p>
+			<p>Просим воздерживаться от неправомерного или неправомочного доступа.</p>
+		</div>
+	</footer>
+	<script src="script.js"></script>
+</body>
+
+</html>
